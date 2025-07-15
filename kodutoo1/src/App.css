@@ -1,0 +1,74 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.roheline-nupp {
+  background-color: green;
+  color: lightgray;
+  padding: 10px 20px;
+  border: none;
+  transition: height 0.3s;
+}
+
+.roheline-nupp:hover {
+  height: 100px;
+}
+
+.roheline-nupp:active {
+  cursor: grab;
+}
+
+.sinine-tekst {
+  color: blue;
+  font-style: italic;
+}
+
+.sinine-tekst:hover {
+  font-size: 24px;
+}
+
+.roheline-tekst {
+  color: green;
+  border: 2px solid red;
+}
+
+.roheline-tekst:hover {
+  border-color: brown;
+}
+
+.pilt {
+  width: 400px;
+  height: 600px;
+  float: right;
+}
+
+.pilt:hover {
+  border-radius: 20px;
+  opacity: 70%;
+}
+
+.styled-table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabel {
+  width: 1000px;
+  height: 400px;
+  float: inline-end;
+
+}
+
+.tabel td, .tabel th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.tabel tr:nth-child(even) {
+  background-color: #dddddd;
+}
