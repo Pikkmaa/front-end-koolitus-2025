@@ -39,12 +39,35 @@
 .main-link {
   color: rgb(66, 18, 18);
   background-color: white;
-  width: 300;
-  height: 200;
+  width: 350px;
+  height: 180px;
   margin-top: 20px;
   padding: 20px 0;
   border-radius: 10px;
   text-align: center;
   text-decoration: none;
   font-family: 'Roboto';
+}
+
+.facebook-nupp {
+  float: left;
+}
+
+.facebook-nupp img {
+  height: 30px;
+  padding: 20px 10px;
+}
+
+.facebook-nupp span {
+  position: relative;
+  top: -30px;
+  height: 30px;
+  color: black;
+}
+
+.facebook-nupp:hover {
+  color: #7ba9c3;
+  cursor: pointer;
+  transition: 0.5;
+  box-shadow: 0 8px 100px 0px;
 }
