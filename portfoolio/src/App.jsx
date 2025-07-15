@@ -10,6 +10,7 @@ function App() {
     <>
       <div>
         <img className="peatsi-pilt" src="https://cdn.midjourney.com/8e3ba7f3-f306-4f7f-bc09-945cbe075aee/0_1.png" alt="Muses" />
+        <div>Tere! Mina olen Toomas</div>
         <div className="joon"></div>
 
      
