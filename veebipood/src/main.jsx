@@ -17,3 +17,20 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+
+// 4 esimest päeva Indrekuga
+// 5. 14.07 - react-router-dom, useState algus
+// 6. 16.07 - useRef, funktsioonid, dünaamiline CSS klass, alamkomponendid
+// 7. 21.07 - kalkulaator
+// 8. 23.07 - DISAINER
+// 9. 28.07
+//10. 30.07
+//11. 04.08
+//12. 06.08
+//13. 11.08
+//14. 13.08
+//15. 18.08
+//16. 20.08
+//17. 25.08
+//18. 03.09 - ametlik lõpukuupäev

@@ -18,3 +18,21 @@
 .pilt:active {
   transform: scale(90%);
 }
+
+.summa-aktiivne {
+  border: 1px solid rgb(227 6 140);
+  color: rgb(227 6 140);
+}
+
+.linn-aktiivne {
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.keel-aktiivne {
+  font-weight: bold;
+}
+
+.kuldne {
+  color: goldenrod;
+}

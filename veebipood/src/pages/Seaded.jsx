@@ -4,10 +4,10 @@ function Seaded() {
     const [keel, setKeel] = useState("et")
   return (
     <div>
-        <button onClick= {() => setKeel("et")}>Eesti</button>
-        <button onClick= {() => setKeel("en")}>English</button>
-        <button onClick= {() => setKeel("es")}>Espanol</button>
-        <button onClick= {() => setKeel("ru")}>Russia</button>
+        <button className={keel === "et" ? "keel-aktiivne" :undefined} onClick= {() => setKeel("et")}>Eesti</button>
+        <button className={keel === "en" ? "keel-aktiivne" :undefined} onClick= {() => setKeel("en")}>English</button>
+        <button className={keel === "es" ? "keel-aktiivne" :undefined} onClick= {() => setKeel("es")}>Espanol</button>
+        <button className={keel === "ru" ? "keel-aktiivne" :undefined} onClick= {() => setKeel("ru")}>Russia</button>
         <div>Hetkel aktiivne keel: {keel} </div>
 
         {keel === "et" && <div>Leht on eesti keeles</div>}
