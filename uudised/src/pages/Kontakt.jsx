@@ -1,18 +1,23 @@
+import { useState } from "react"
+
 function Kontakt() {
+  const [urmasetel, muudaUrmasetel] = useState(false);
+  const [reinutel, muudaReinutel] = useState(false);
+  const [matitel, muudaMatitel] = useState(false);
   return (
     <div>
     <div>See on kontaktide leht, nähtav localhost:5173 aadressil</div>
 
-    <div>Urmas Hiir</div>
-    <div>tel: 90034501</div>
+    <div onClick={() => muudaUrmasetel(!urmasetel)} >Urmas Hiir</div>
+    {urmasetel && <div>tel: 90034501</div>}
     <div>email: urmas.hiir@uudised.ee</div>
 
-    <div>Rein Rebane</div>
-    <div>tel: 90034502</div>
+    <div onClick={() => muudaReinutel(!reinutel)} >Rein Rebane</div>
+    {reinutel && <div>tel: 90034502</div>}
     <div>email: rein.rebane@uudised.ee</div>
 
-    <div>Mati Karu</div>
-    <div>tel: 90034503</div>
+    <div onClick={() => muudaMatitel(!matitel)} >Mati Karu</div>
+    {matitel && <div>tel: 90034503</div>}
     <div>email: mati.karu@uudised.ee</div>
 
     </div>
