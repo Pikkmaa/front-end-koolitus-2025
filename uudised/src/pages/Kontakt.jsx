@@ -8,15 +8,15 @@ function Kontakt() {
     <div>
     <div>See on kontaktide leht, nähtav localhost:5173 aadressil</div>
 
-    <div onClick={() => muudaUrmasetel(!urmasetel)} >Urmas Hiir</div>
+    <div className={urmasetel === true ? "valitud" : undefined} onClick={() => muudaUrmasetel(!urmasetel)} >Urmas Hiir</div>
     {urmasetel && <div>tel: 90034501</div>}
     <div>email: urmas.hiir@uudised.ee</div>
 
-    <div onClick={() => muudaReinutel(!reinutel)} >Rein Rebane</div>
+    <div className={reinutel === true ? "valitud" : undefined} onClick={() => muudaReinutel(!reinutel)} >Rein Rebane</div>
     {reinutel && <div>tel: 90034502</div>}
     <div>email: rein.rebane@uudised.ee</div>
 
-    <div onClick={() => muudaMatitel(!matitel)} >Mati Karu</div>
+    <div className={matitel === true ? "valitud" : undefined} onClick={() => muudaMatitel(!matitel)} >Mati Karu</div>
     {matitel && <div>tel: 90034503</div>}
     <div>email: mati.karu@uudised.ee</div>
 
