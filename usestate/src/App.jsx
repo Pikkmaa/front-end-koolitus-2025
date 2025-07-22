@@ -4,6 +4,7 @@ import './App.css'
 import Ilmumine from './pages/Ilmumine'
 import Kujundus from './pages/Kujundus'
 import Muutmine from './pages/Muutmine'
+import Telefon from './pages/Telefon'
 
 function App() {
 
@@ -22,11 +23,16 @@ function App() {
         <button>Muutmine</button>
       </Link>
 
+      <Link to="/telefon">
+        <button>Telefon</button>
+      </Link>
+
       <Routes>
         <Route path="/" element={ < Navigate to= "ilmumine" />} />
         <Route path="ilmumine" element={ <Ilmumine />} />
         <Route path="kujundus" element={< Kujundus />} />
         <Route path="muutmine" element={< Muutmine/>} />
+        <Route path="telefon" element={< Telefon/>} />
 
 
       </Routes>

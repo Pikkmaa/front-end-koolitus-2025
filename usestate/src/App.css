@@ -53,3 +53,47 @@
   margin: 20px;
   border: 3px solid purple;
 }
+
+.must-ring {
+  margin-top: 2px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.valge-ring {
+  margin-top: 2px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.hall-ring {
+  margin-top: 2px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: lightgray;
+  border: 1px solid black;
+}
+
+.roheline-ring {
+  margin-top: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: lightgreen;
+  border: 1px solid black;
+}
+
+.punane-ring {
+  margin-top: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: maroon;
+  border: 1px solid black;
+}
