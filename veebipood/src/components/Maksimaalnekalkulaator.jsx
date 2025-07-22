@@ -13,10 +13,8 @@ function Maksimaalnekalkulaator() {
     const neto = Number(sissetulekRef.current.value);
     const kohustused = Number(kohustusedRef.current.value);
     const ylalpeetavad = Number(ylalpeetavRef.current.value);
-
     const uusJ22k = neto - kohustused;
     setJ22k(uusJ22k);
-
     const arvutatav = uusJ22k - ylalpeetavad * 100;
 
     if (arvutatav <= 1000) {
@@ -24,20 +22,13 @@ function Maksimaalnekalkulaator() {
       setLimiit(0);
       return;
     }
-
     setVeateade("");
     setLimiit(arvutatav * 75);
   }
-
-
   return (
     <div>
-
-
-      <h2>Maksimaalne limiit</h2>
+      <h3>Maksimaalne limiit</h3>
       {veateade === "" ? <div><strong>Limiit:</strong> <div className="summa-aktiivne">{limiit.toFixed(2)}</div></div> : <div className="veateade">{veateade}</div>}
-
-
 
       <label>Ülalpeetavad</label>
       <select ref={ylalpeetavRef} defaultValue={0} onChange={arvutaLimiit}>
