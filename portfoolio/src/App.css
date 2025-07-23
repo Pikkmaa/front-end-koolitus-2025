@@ -69,3 +69,14 @@
   color: #7ba9c3;
   cursor: pointer;
 }
+
+.aktiivne-kursus {
+  background-color: azure;
+  text-decoration: underline;
+  color: chocolate;
+}
+
+.kursus {
+  background-color: bisque;
+  opacity: 60%;;
+}

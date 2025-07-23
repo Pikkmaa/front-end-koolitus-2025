@@ -97,3 +97,10 @@
   background-color: maroon;
   border: 1px solid black;
 }
+
+.aktiivne {
+  text-decoration: underline;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+}
