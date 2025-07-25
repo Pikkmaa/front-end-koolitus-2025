@@ -4,6 +4,7 @@ import Avaleht from './pages/Avaleht'
 import Kontakt from './pages/Kontakt'
 import Meist from './pages/Meist'
 import Uudised from './pages/Uudised'
+import Seaded from './pages/Seaded'
 
 function App() {
 
@@ -26,6 +27,10 @@ function App() {
         <button>Info meist</button>
         </Link>
 
+         <Link to='/seaded'>
+        <button>Seaded</button>
+        </Link>
+
 
 
 
@@ -39,6 +44,7 @@ function App() {
           <Route path='/uudised' element= { < Uudised /> }/>
           <Route path='/kontakt' element= { < Kontakt /> }/>
           <Route path='/meist' element= { < Meist /> }/>
+          <Route path='/seaded' element= { < Seaded /> }/>
         </Routes>
       </div>
     </>

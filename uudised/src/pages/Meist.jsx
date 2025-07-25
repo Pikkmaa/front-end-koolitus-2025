@@ -2,6 +2,7 @@ import { useState } from "react"
 
 function Meist() {
   const [kontakt, showKontakt] = useState("");
+  const [sonum, setSonum] = useState("Vali mõni tegevus")
   return (
     <div>
     <div>See on meist leht, nähtav localhost:5173 aadressil</div>
@@ -23,7 +24,12 @@ function Meist() {
     <button onClick={() => showKontakt('900 237 06')}>Võta ühendust</button>
     <br />
 
-   { kontakt !== "" && <div>Tema kontakt: {kontakt} </div>}
+   { kontakt !== "" && <div>Tema kontakt: {kontakt} </div>} <br />
+
+   <div>{sonum}</div>
+   <button onClick={() => setSonum("Selleks saada meile email jobs@html-css.com")} >Kandideeri tööle</button>
+   <button onClick={() => setSonum("Meil on 10 töötajat kelle info lehel ilmub peagi")} >Vaata meie töötajaid</button>
+   <button onClick={() => setSonum("Ühenduse võtmikseks, mine lehele Kontakt")} >Võta meiega ühendust</button>
 
 
     </div>

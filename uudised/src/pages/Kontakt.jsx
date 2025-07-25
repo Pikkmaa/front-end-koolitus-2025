@@ -19,6 +19,7 @@ function Kontakt() {
     <div className={matitel === true ? "valitud" : undefined} onClick={() => muudaMatitel(!matitel)} >Mati Karu</div>
     {matitel && <div>tel: 90034503</div>}
     <div>email: mati.karu@uudised.ee</div>
+    
 
     </div>
   )
