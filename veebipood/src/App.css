@@ -40,3 +40,14 @@
 .veateade {
   color: red;
 }
+
+.link {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.link:hover {
+  border: 1px solid gray;
+}

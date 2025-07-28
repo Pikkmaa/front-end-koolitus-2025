@@ -30,6 +30,15 @@ function Menu() {
       <button>Kalkulaator</button>
       </Link>
 
+      <Link to= "/arrays">
+      <button>Arrays</button>
+      </Link>
+
+      <Link to= "/halda">
+      <button>Halda</button>
+      </Link>
+
+
 
     </div>
   )
