@@ -1,4 +1,5 @@
 import { useState } from "react"
+import ostukorvFailist from '../data/ostukorv.json'
 
 // renderdamine - esmakordselt lehele tulek, HTML-i välja näitamine, väga palju tööd, sest kuvab kogu HTML-i välja
 
@@ -9,18 +10,32 @@ import { useState } from "react"
 
 
 function Ostukorv() {
-  const [tooted, setTooted] = useState(["Coca", "Fanta", "Sprite"]);
+  const [tooted, setTooted] = useState(ostukorvFailist.slice());
+
+  function kustuta(index) {
+    ostukorvFailist.splice(index,1);
+    setTooted(ostukorvFailist.slice());
+  }
+
+  function tyhjenda() {
+    ostukorvFailist.splice(0);
+    setTooted(ostukorvFailist.slice());
+  }
   return (
   <div>
     {tooted.length > 0 &&
       <div>
-        <button onClick={() => setTooted([])} >Tühjenda</button>
+        <button onClick={tyhjenda} >Tühjenda</button>
         <div>Ostukorvis on {tooted.length} toodet</div>
       </div>
     }
 
       {tooted.length === 0 && <div>Ostukorv on tühi</div>}
-      {tooted.map(toode => <div key={toode}>{toode}</div> )}
+      {tooted.map((toode, index) =>
+      <div key={toode}>
+        {toode}
+        <button onClick={() => kustuta(index)}>x</button>
+        </div> )}
   </div>
   )
 }

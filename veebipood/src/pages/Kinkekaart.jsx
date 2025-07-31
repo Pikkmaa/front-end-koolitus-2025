@@ -7,7 +7,10 @@ function Kinkekaart() {
     const [kogus, seKogus] = useState(1);
     const emailRef = useRef()
 
-    function sisesta() {
+    function sisesta(event) {
+        if (event.key !== "Enter" && event.type !== "click") {
+            return;
+        }
         if (emailRef.current.value === "") {
             alert("Email ei saa olla tühi!");
             return; // lõpeta funtsioon, ära edasi mine
@@ -36,8 +39,8 @@ function Kinkekaart() {
         <div>{ summa * kogus } €</div>
 
         <label>Email </label> <br />
-        <input ref = {emailRef }type="text" /> <br />
-        <button onClick={sisesta} >Sisesta</button>  <br />
+        <input onKeyUp={(e) => sisesta(e)} ref = {emailRef }type="text" /> <br />
+        <button onClick={(e) => sisesta(e)} >Sisesta</button>  <br />
 
 
 

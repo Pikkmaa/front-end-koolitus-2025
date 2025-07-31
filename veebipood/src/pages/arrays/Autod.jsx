@@ -1,52 +1,43 @@
 import { useState } from "react"
 import ArraysHome from "./ArraysHome"
+import autodFailist from "../../data/autod.json"
+import ostukorvFailist from '../../data/ostukorv.json'
 
 function Autod() {
-    const [autod, setAutod] = useState([
-        "Toyota",
-        "Ford",
-        "Honda",
-        "BMW",
-        "Mercedes-Benz",
-        "Audi",
-        "Chevrolet",
-        "Hyundai",
-        "Nissan",
-        "Volkswagen"
-    ]);
+    const [autod, setAutod] = useState(autodFailist.slice());
 
     function reset() {
-        setAutod([
-        "Toyota",
-        "Ford",
-        "Honda",
-        "BMW",
-        "Mercedes-Benz",
-        "Audi",
-        "Chevrolet",
-        "Hyundai",
-        "Nissan",
-        "Volkswagen"
-    ]);
+        setAutod(autodFailist.slice());
     }
 
     function sorteeriAZ() {
-        autod.sort((a, b) => a.localeCompare(b));
+        autod.sort((a, b) => a.nimi.localeCompare(b.nimi));
         setAutod(autod.slice());   
     }
 
     function sorteeriZA () {
-        autod.sort((a, b) => b.localeCompare(a));
+        autod.sort((a, b) => b.nimi.localeCompare(a.nimi));
         setAutod(autod.slice());
     }
 
     function sorteeriTahedKasvavalt() {
-        autod.sort((a, b) => a.length - b.length);
+        autod.sort((a, b) => a.nimi.length - b.nimi.length);
         setAutod(autod.slice());  
     }
 
     function sorteeriTahedKahanevalt() {
-        autod.sort((a, b) => b.length - a.length);
+        autod.sort((a, b) => b.nimi.length - a.nimi.length);
+        setAutod(autod.slice());  
+        
+    }
+    function sorteeriOdavamast() {
+        autod.sort((a, b) => a.hind - b.hind)
+        setAutod(autod.slice());  
+        
+    }
+
+    function sorteeriKallimast() {
+        autod.sort((a, b) => b.hind - a.hind)
         setAutod(autod.slice());  
         
     }
@@ -54,33 +45,37 @@ function Autod() {
     function sorteeriKolmasTahtAZ() {
         // autod.sort((a, b) => a.charAt(2).localeCompare(b.charAt(2)));
         //autod.sort((a, b) => a.at(2).localeCompare(b.at(2)));
-        autod.sort((a, b) => a[2].localeCompare(b[2]));
+        autod.sort((a, b) => a.nimi[2].localeCompare(b.nimi[2]));
         setAutod(autod.slice());
     }
 
     function filtreeriAgaLoppevad() {
-        const vastus = autod.filter(auto => auto.endsWith("a"));
+        const vastus = autod.filter(auto => auto.nimi.endsWith("a"));
         setAutod(vastus);
     }
 
         function filtreeriLyhenditOLSisaldavad() {
-        const vastus = autod.filter(auto => auto.includes("ol"));
+        const vastus = autod.filter(auto => auto.nimi.includes("ol"));
         setAutod(vastus);
     }
 
         function filtreeriPikemadKui6() {
-        const vastus = autod.filter(auto => auto.length > 6);
+        const vastus = autod.filter(auto => auto.nimi.length > 6);
         setAutod(vastus);
     }
 
         function filtreeriTapselt6() {
-        const vastus = autod.filter(auto => auto.length === 6);
+        const vastus = autod.filter(auto => auto.nimi.length === 6);
         setAutod(vastus);
     }
 
         function filtreeriTeineTahtO() {
-        const vastus = autod.filter(auto => auto[1] === "o");
+        const vastus = autod.filter(auto => auto.nimi[1] === "o");
         setAutod(vastus);
+    }
+
+    function lisaOstukorvi(toode) {
+        ostukorvFailist.push(toode);
     }
 
 
@@ -94,6 +89,8 @@ function Autod() {
         <br /> <br />
         <button onClick={sorteeriAZ}>Sorteeri AZ</button>
         <button onClick={sorteeriZA}>Sorteeri ZA</button>
+        <button onClick={sorteeriOdavamast}>Odavamad ees</button>
+        <button onClick={sorteeriKallimast}>Kallimad ees</button>
         <button onClick={sorteeriTahedKasvavalt}>Sorteeri tähed kasvavalt</button>
         <button onClick={sorteeriTahedKahanevalt}>Sorteeri tähed kahanevalt</button>
         <button onClick={sorteeriKolmasTahtAZ}>Sorteeri kolmas täht AZ</button>
@@ -111,7 +108,13 @@ function Autod() {
 
 
         <div>Nähtaval on {autod.length} autot</div>
-        <div>{autod.map(auto => <div key={auto}>{auto}</div>)} </div>
+        <div>{autod.map(auto =>
+            <div key={auto}>
+                <img src={auto.pilt} alt="" />
+            {auto.nimi} {auto.hind}
+            {auto.aktiivne && <button onClick={() => lisaOstukorvi(auto)}>Lisa ostukorvi</button>}
+            </div>)}
+        </div>
     </div>
   )
 }

@@ -1,33 +1,12 @@
 import { useState } from "react"
 import ArraysHome from "./ArraysHome"
+import hinnadFailist from '../../data/hinnad.json'
 
 function Hinnad() {
-    const [hinnad, setHinnad ] = useState([
-        49.99,
-        17.25,
-        11.89,
-        32.45,
-        8.99,
-        129.00,
-        14.50,
-        39.95,
-        27.75,
-        6.40
-    ]);
+    const [hinnad, setHinnad ] = useState(hinnadFailist.slice());
 
     function reset() {
-        setHinnad([
-        49.99,
-        17.25,
-        11.89,
-        32.45,
-        8.99,
-        129.00,
-        14.50,
-        39.95,
-        27.75,
-        6.40
-    ]);
+        setHinnad(hinnadFailist.slice());
     }
 
     function sorteeriKasvavalt() {
@@ -56,7 +35,7 @@ function Hinnad() {
   return (
     <div>
         < ArraysHome />
-        <button onClick={reset}>Reset</button>
+        <button onClick={reset}>Reseti fitrid</button>
         <br /> <br />
 
         <button onClick={sorteeriKasvavalt}>Sorteeri kasvavalt</button>

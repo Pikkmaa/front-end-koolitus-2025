@@ -1,7 +1,17 @@
 import { useState } from "react"
+import esindused from '../../data/esindused.json'
 
 function Esindused() {
     const [linn, setLinn] = useState("Tallinn");
+/*     const esindused = [
+    "Ülemiste",
+    "Rocca al Mare",
+    "Magistraali",
+    "Vesse",
+    "Kristiine",
+    "Järveotsa",
+    "Viru"
+  ]; */
 
 
   return (
@@ -13,12 +23,8 @@ function Esindused() {
         <button className={linn === "Pärnu" ? "linn-aktiivne" :undefined} onClick = {() => setLinn("Pärnu")}>Pärnu</button>
 
         {linn === "Tallinn" && <div>
-            <div>Ülemiste</div>
-            <div>Magistraali</div>
-            <div>Kristiine</div>
-            <div>Vesse</div>
-            <div>Järve</div>
-            <div>Järveotsa</div>
+          <div>Esinduste arv: {esindused.length} tk.</div>
+            {esindused.map(esindus => <div key={esindus}>{esindus}</div>)}
         </div>}
 
         {linn === "Tartu" && <div>

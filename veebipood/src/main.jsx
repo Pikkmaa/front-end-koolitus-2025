@@ -24,8 +24,8 @@ createRoot(document.getElementById('root')).render(
 // 6. 16.07 - useRef, funktsioonid, dünaamiline CSS klass, alamkomponendid
 // 7. 21.07 - kalkulaator
 // 8. 23.07 - DISAINER
-// 9. E 28.07 - arrays
-//10. N 31.07
+// 9. E 28.07 - arrays, tabel
+//10. N 31.07 - kustutamine, lisamine, fail, objektid
 //11. E 04.08
 //12. K 06.08
 //13. T 12.08
