@@ -51,3 +51,60 @@
 .link:hover {
   border: 1px solid gray;
 }
+
+.tooted-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.toote-kaart {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  width: 100%;
+  max-width: 200px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.toote-pilt {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  margin: 10px 0;
+}
+
+.toote-nimi {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.toote-hind {
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.halda-tabel {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.halda-tabel th,
+.halda-tabel td {
+  padding: 8px;
+  text-align: center;
+}
+
+.halda-tabel thead {
+  background-color: #f0f0f0;
+}
+
+.halda-toote-pilt {
+  width: 60px;
+  height: auto;
+}

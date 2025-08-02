@@ -1,6 +1,11 @@
+import HaldaHome from "./HaldaHome";
 function HaldaKasutajad() {
   return (
-    <div>HaldaKasutajad</div>
+    <div>
+      < HaldaHome />
+    
+    
+    </div>
   )
 }
 

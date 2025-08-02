@@ -108,12 +108,17 @@ function Autod() {
 
 
         <div>Nähtaval on {autod.length} autot</div>
-        <div>{autod.map(auto =>
-            <div key={auto}>
-                <img src={auto.pilt} alt="" />
-            {auto.nimi} {auto.hind}
-            {auto.aktiivne && <button onClick={() => lisaOstukorvi(auto)}>Lisa ostukorvi</button>}
-            </div>)}
+        <div className="tooted-grid">
+            {autod.map(auto =>
+                <div className="toote-kaart" key={auto}>
+                <div className="toote-nimi">{auto.nimi}</div>
+                <div className="toote-hind">{auto.hind} €</div>
+                <img className="toote-pilt" src={auto.pilt} alt={auto.nimi} />
+                {auto.aktiivne && (
+                    <button onClick={() => lisaOstukorvi(auto)}>Lisa ostukorvi</button>
+                )}
+                </div>
+            )}
         </div>
     </div>
   )

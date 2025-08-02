@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import autodFailist from "../../data/autod.json"
+import HaldaHome from "./HaldaHome";
 
 
 function HaldaAutod() {
@@ -28,6 +29,7 @@ function HaldaAutod() {
 
   return (
     <div>
+        < HaldaHome />
         <label>Auto nimi</label>
         <input ref={autodRef} type="text" /> <br />
 
@@ -42,7 +44,7 @@ function HaldaAutod() {
         <button onClick={lisa}>Sisesta</button>
 
         <div>Autode arv: {autod.length} tk.</div>
-        <table>
+        <table className="halda-tabel">
             <thead>
                 <tr>
                     <th>Järjekorranumber</th>
@@ -62,7 +64,7 @@ function HaldaAutod() {
                     <td>{auto.nimi}</td>
                     <td>{auto.hind}</td>
                     <td>{auto.aktiivne ? "Aktiivnee" : "Mitteaktiivne"}</td>
-                    <td><img src={auto.pilt} alt="" /></td>
+                    <td><img className="halda-toote-pilt" src={auto.pilt} alt="" /></td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
                 </tr>)}
             </tbody>

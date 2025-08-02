@@ -1,81 +1,61 @@
 import { useState } from "react";
 import ArraysHome from "./ArraysHome"
+import tootedFailist from "../../data/tooted.json"
+import ostukorvFailist from '../../data/ostukorv.json'
 
 function Tooted() {
-    const [tooted, setTooted] = useState([
-        "Coca",
-        "Fanta",
-        "Sprite",
-        "Vichy",
-        "Red Bull",
-        "Aura", 
-        "Moster Energy", 
-        "VitaWell", 
-        "Limpa",
-        "Miranda"
-    ]);
+    const [tooted, setTooted] = useState(tootedFailist);
 
     function reset() {
-        setTooted([
-        "Coca",
-        "Fanta",
-        "Sprite",
-        "Vichy",
-        "Red Bull",
-        "Aura", 
-        "Moster Energy", 
-        "VitaWell", 
-        "Limpa",
-        "Miranda"
-    ]);
+        setTooted(tootedFailist);
     }
 
     function sorteeriAZ() {
-        tooted.sort((a, b) => a.localeCompare(b));
+        tooted.sort((a, b) => a.nimi.localeCompare(b.nimi));
         setTooted(tooted.slice());
     }
     function sorteeriZA() {
-        tooted.sort((a, b) => b.localeCompare(a));
+        tooted.sort((a, b) => b.nimi.localeCompare(a.nimi));
         setTooted(tooted.slice());
     }
     function sorteeriTahedKasvavalt() {
-        tooted.sort((a, b) => a.length - b.length);
+        tooted.sort((a, b) => a.nimi.length - b.nimi.length);
         setTooted(tooted.slice());
     }
 
     function sorteeriTahedKahanevalt() {
-        tooted.sort((a, b) => b.length - a.length);
+        tooted.sort((a, b) => b.nimi.length - a.nimi.length);
         setTooted(tooted.slice());
     }
     function sorteeriTeineTahtAZ() {
-        tooted.sort((a, b) => a[1].localeCompare(b[1]));
+        tooted.sort((a, b) => a.nimi[1].localeCompare(b.nimi[1]));
         setTooted(tooted.slice());
     }
 
 
     function filtreeriKuuetahelised() {
-        const vastus = tooted.filter(toode => toode.length <= 6);
+        const vastus = tooted.filter(toode => toode.nimi.length <= 6);
         setTooted(vastus);
     }
 
     function filtreeriTapseltKuuetahelised() {
-        const vastus = tooted.filter(toode => toode.length === 6);
+        const vastus = tooted.filter(toode => toode.nimi.length === 6);
         setTooted(vastus);
     }
 
     function filtreeriAgaloppevaid() {
-        const vastus = tooted.filter(toode => toode.endsWith("a"));
+        const vastus = tooted.filter(toode => toode.nimi.endsWith("a"));
         setTooted(vastus);
     }
 
     function filtreeriYgaloppevaid() {
-        const vastus = tooted.filter(toode => toode.endsWith("a"));
+        const vastus = tooted.filter(toode => toode.nimi.endsWith("y"));
         setTooted(vastus);
     }
 
     function filtreeriPaarisArvTahti() {
         const vastus = tooted.filter(toode => {
-            const tahed = toode.toLowerCase().replaceAll(" ", "");
+            const tahed = toode.nimi.toLowerCase().replaceAll(" ", "");
             for (let i = 0; i < tahed.length -1; i++) {
                 if (tahed[i] === tahed[i + 1]) {
                     return true;
@@ -84,6 +64,10 @@ function Tooted() {
             return false;
         });
         setTooted(vastus);
+    }
+
+    function lisaOstukorvi(toode) {
+        ostukorvFailist.push(toode);
     }
 
   return (
@@ -105,12 +89,19 @@ function Tooted() {
         <button onClick={filtreeriYgaloppevaid}>Näita Y-ga lõppevaid</button>
         <button onClick={filtreeriPaarisArvTahti}>Näita kõrvuti kaks sama tähte</button>
     
-        <div>Meil on {tooted.length} toodet!</div>
-        <div>{tooted.map(toode => <div key={toode}>{toode}</div>)} </div>
-
-
-
-
+        <div>Nähtaval on {tooted.length} toodet</div>
+        <div className="tooted-grid">
+            {tooted.map(toode =>
+                <div className="toote-kaart" key={toode}>
+                <div className="toote-nimi">{toode.nimi}</div>
+                <div className="toote-hind">{toode.hind} €</div>
+                <img className="toote-pilt" src={toode.pilt} alt={toode.nimi} />
+                {toode.aktiivne && (
+                    <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
+                )}
+                </div>
+            )}
+        </div>
     </div>
   )
 }

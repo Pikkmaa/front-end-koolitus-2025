@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import hinnadFailist from '../../data/hinnad.json'
+import HaldaHome from "./HaldaHome";
 
 
 function HaldaHinnad() {
@@ -17,12 +18,13 @@ function HaldaHinnad() {
   }
   return (
     <div>
+      < HaldaHome />
       <label>Hind</label> <br />
       <input ref={hindRef} type="text" /> <br />
       <button onClick={lisa}>Sisesta</button>
 
       <div>Hindade arv: {hinnad.length} tk.</div>
-      <table>
+      <table className="halda-tabel">
             <thead>
                 <tr>
                     <th>Järjekorranumber</th>
