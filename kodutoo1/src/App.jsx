@@ -1,4 +1,7 @@
 import './App.css'
+import { Link, Route, Routes } from 'react-router-dom'
+import Books from './pages/Books'
+import Numbrid from './pages/Numbrid'
 
 function App() {
 
@@ -53,6 +56,19 @@ function App() {
         <td>Italy</td>
       </tr>
     </table>
+
+        <Link to='/raamatud'>
+          <button>Raamatud</button>
+        </Link>
+
+        <Link to='/numbrid'>
+          <button>Numbrid</button>
+        </Link>
+
+        <Routes>
+          <Route path='/raamatud' element= { < Books /> }/>
+          <Route path='/numbrid' element= { < Numbrid /> }/>
+        </Routes>
     </div>
 
     </>

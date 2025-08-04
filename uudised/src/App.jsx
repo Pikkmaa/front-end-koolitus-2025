@@ -6,6 +6,9 @@ import Meist from './pages/Meist'
 import Uudised from './pages/Uudised'
 import Seaded from './pages/Seaded'
 import { useState, useRef } from 'react'
+import Months from './pages/Months'
+import Animals from './pages/Animals'
+import Words from './pages/Words'
 
 function App() {
   const [sisselogitud, setSisselogitud] = useState("ei");
@@ -58,13 +61,17 @@ function App() {
         <button>Seaded</button>
         </Link>
 
+        <Link to='/kuud'>
+        <button>Kuud</button>
+        </Link>
 
+        <Link to='/loomad'>
+        <button>Loomad</button>
+        </Link>
 
-
-
-
-
-
+         <Link to='/sonad'>
+        <button>Sõnad</button>
+        </Link>
 
         <Routes>
           <Route path='/' element= { < Avaleht />}/>
@@ -72,6 +79,9 @@ function App() {
           <Route path='/kontakt' element= { < Kontakt /> }/>
           <Route path='/meist' element= { < Meist /> }/>
           <Route path='/seaded' element= { < Seaded /> }/>
+          <Route path='/kuud' element= { < Months /> }/>
+          <Route path='/loomad' element= { < Animals /> }/>
+          <Route path='/sonad' element= { < Words /> }/>
         </Routes>
       </div>
     </>
