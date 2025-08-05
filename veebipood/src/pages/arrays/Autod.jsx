@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import ArraysHome from "./ArraysHome"
 import autodFailist from "../../data/autod.json"
 import ostukorvFailist from '../../data/ostukorv.json'
+import {Link} from 'react-router-dom'
 
 function Autod() {
     const [autod, setAutod] = useState(autodFailist.slice());
+    const otsingRef = useRef();
 
     function reset() {
         setAutod(autodFailist.slice());
@@ -50,27 +52,27 @@ function Autod() {
     }
 
     function filtreeriAgaLoppevad() {
-        const vastus = autod.filter(auto => auto.nimi.endsWith("a"));
+        const vastus = autodFailist.filter(auto => auto.nimi.endsWith("a"));
         setAutod(vastus);
     }
 
         function filtreeriLyhenditOLSisaldavad() {
-        const vastus = autod.filter(auto => auto.nimi.includes("ol"));
+        const vastus = autodFailist.filter(auto => auto.nimi.includes("ol"));
         setAutod(vastus);
     }
 
         function filtreeriPikemadKui6() {
-        const vastus = autod.filter(auto => auto.nimi.length > 6);
+        const vastus = autodFailist.filter(auto => auto.nimi.length > 6);
         setAutod(vastus);
     }
 
         function filtreeriTapselt6() {
-        const vastus = autod.filter(auto => auto.nimi.length === 6);
+        const vastus = autodFailist.filter(auto => auto.nimi.length === 6);
         setAutod(vastus);
     }
 
         function filtreeriTeineTahtO() {
-        const vastus = autod.filter(auto => auto.nimi[1] === "o");
+        const vastus = autodFailist.filter(auto => auto.nimi[1] === "o");
         setAutod(vastus);
     }
 
@@ -78,13 +80,24 @@ function Autod() {
         ostukorvFailist.push(toode);
     }
 
+    function arvutaKokku() {
+        let sum = 0;
+        autod.forEach(auto => sum = sum + auto.hind);
+        return sum;
+    }
 
-
-
+    function otsi() {
+        const vastus = autodFailist.filter(auto =>
+            auto.nimi.toLocaleLowerCase().includes(otsingRef.current.value.toLocaleLowerCase()) ||
+            auto.hind.toString().includes(otsingRef.current.value.toLocaleLowerCase())
+        );
+        setAutod(vastus)
+    }
 
   return (
     <div>
         <ArraysHome />
+        <input onChange={otsi} ref={otsingRef} type="text" />
         <button onClick={reset}>Reset</button>
         <br /> <br />
         <button onClick={sorteeriAZ}>Sorteeri AZ</button>
@@ -110,16 +123,21 @@ function Autod() {
         <div>Nähtaval on {autod.length} autot</div>
         <div className="tooted-grid">
             {autod.map(auto =>
-                <div className="toote-kaart" key={auto}>
+                <div className="toote-kaart" key={auto.nimi}>
                 <div className="toote-nimi">{auto.nimi}</div>
                 <div className="toote-hind">{auto.hind} €</div>
                 <img className="toote-pilt" src={auto.pilt} alt={auto.nimi} />
                 {auto.aktiivne && (
                     <button onClick={() => lisaOstukorvi(auto)}>Lisa ostukorvi</button>
                 )}
+                <Link to={"/yks-auto/" + auto.nimi}>
+                <button>Vaata lähemalt</button>
+                </Link>
                 </div>
             )}
         </div>
+
+        <div>Kõikide autode hind kokku: {arvutaKokku().toFixed(2)} €</div>
     </div>
   )
 }

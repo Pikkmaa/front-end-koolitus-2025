@@ -108,3 +108,29 @@
   width: 60px;
   height: auto;
 }
+
+.vorm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px; /* valikuline, visuaalseks tsentreerimiseks */
+}
+
+.vorm input {
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.vorm label {
+  margin-top: 5px;
+}
+
+.redigeeri-nupp img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.redigeeri-nupp img:hover {
+  transform: scale(110%);
+}

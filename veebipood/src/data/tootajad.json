@@ -1,0 +1,12 @@
+[
+    { "nimi": "Anna", "vanus": 28, "ametikoht": "turundusspetsialist" },
+    { "nimi": "Tom", "vanus": 34, "ametikoht": "veebiarendaja" },
+    { "nimi": "Katrin", "vanus": 41, "ametikoht": "raamatupidaja" },
+    { "nimi": "Marek", "vanus": 36, "ametikoht": "projektijuht" },
+    { "nimi": "Maarja Liis", "vanus": 30, "ametikoht": "UX disainer" },
+    { "nimi": "Jan", "vanus": 25, "ametikoht": "andmeanalüütik" },
+    { "nimi": "Evelin", "vanus": 45, "ametikoht": "personalijuht" },
+    { "nimi": "Mart", "vanus": 38, "ametikoht": "testija" },
+    { "nimi": "Grete", "vanus": 27, "ametikoht": "sisutootja" },
+    { "nimi": "Karl Martin", "vanus": 32, "ametikoht": "müügijuht" }
+]

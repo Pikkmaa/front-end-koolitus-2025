@@ -2,9 +2,12 @@ import { useState } from "react";
 import ArraysHome from "./ArraysHome"
 import tootedFailist from "../../data/tooted.json"
 import ostukorvFailist from '../../data/ostukorv.json'
+import { useRef } from "react";
+import {Link} from 'react-router-dom'
 
 function Tooted() {
     const [tooted, setTooted] = useState(tootedFailist);
+    const otsingRef = useRef();
 
     function reset() {
         setTooted(tootedFailist);
@@ -34,27 +37,27 @@ function Tooted() {
 
 
     function filtreeriKuuetahelised() {
-        const vastus = tooted.filter(toode => toode.nimi.length <= 6);
+        const vastus = tootedFailist.filter(toode => toode.nimi.length <= 6);
         setTooted(vastus);
     }
 
     function filtreeriTapseltKuuetahelised() {
-        const vastus = tooted.filter(toode => toode.nimi.length === 6);
+        const vastus = tootedFailist.filter(toode => toode.nimi.length === 6);
         setTooted(vastus);
     }
 
     function filtreeriAgaloppevaid() {
-        const vastus = tooted.filter(toode => toode.nimi.endsWith("a"));
+        const vastus = tootedFailist.filter(toode => toode.nimi.endsWith("a"));
         setTooted(vastus);
     }
 
     function filtreeriYgaloppevaid() {
-        const vastus = tooted.filter(toode => toode.nimi.endsWith("y"));
+        const vastus = tootedFailist.filter(toode => toode.nimi.endsWith("y"));
         setTooted(vastus);
     }
 
     function filtreeriPaarisArvTahti() {
-        const vastus = tooted.filter(toode => {
+        const vastus = tootedFailist.filter(toode => {
             const tahed = toode.nimi.toLowerCase().replaceAll(" ", "");
             for (let i = 0; i < tahed.length -1; i++) {
                 if (tahed[i] === tahed[i + 1]) {
@@ -70,9 +73,18 @@ function Tooted() {
         ostukorvFailist.push(toode);
     }
 
+    function otsi() {
+        const vastus = tootedFailist.filter(toode =>
+            toode.nimi.toLocaleLowerCase().includes(otsingRef.current.value.toLocaleLowerCase()) ||
+            toode.hind.toString().includes(otsingRef.current.value.toLocaleLowerCase())
+        );
+        setTooted(vastus)
+    }
+
   return (
     <div>
         < ArraysHome />
+        <input onChange={otsi} ref={otsingRef} type="text" />
         <button onClick={reset} >Reset</button>
         <br /> <br />
         <button onClick={sorteeriAZ}>Sorteeri AZ</button>
@@ -92,13 +104,16 @@ function Tooted() {
         <div>Nähtaval on {tooted.length} toodet</div>
         <div className="tooted-grid">
             {tooted.map(toode =>
-                <div className="toote-kaart" key={toode}>
+                <div className="toote-kaart" key={toode.nimi}>
                 <div className="toote-nimi">{toode.nimi}</div>
                 <div className="toote-hind">{toode.hind} €</div>
                 <img className="toote-pilt" src={toode.pilt} alt={toode.nimi} />
                 {toode.aktiivne && (
                     <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button>
                 )}
+                <Link to={"/yks-toode/" + toode.nimi}>
+                    <button>Vaata lähemalt</button>
+                </Link>
                 </div>
             )}
         </div>

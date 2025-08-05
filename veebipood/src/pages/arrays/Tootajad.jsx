@@ -1,88 +1,72 @@
 import { useState } from "react"
 import ArraysHome from "./ArraysHome"
+import { useRef } from "react";
+import tootajadFailist from '../../data/tootajad.json'
+import {Link} from 'react-router-dom'
+
 
 function Tootajad() {
-    const [tootajad, setTootajad] = useState([
-        "Anna",
-        "Tom",
-        "Katrin",
-        "Marek",
-        "Maarja Liis",
-        "Jan", 
-        "Evelin", 
-        "Mart", 
-        "Grete",
-        "Karl Martin"
-    ]);
+    const otsingRef = useRef();
+    
+    const [tootajad, setTootajad] = useState(tootajadFailist);
     function reset() {
-        setTootajad([
-        "Anna",
-        "Tom",
-        "Katrin",
-        "Marek",
-        "Maarja Liis",
-        "Jan", 
-        "Evelin", 
-        "Mart", 
-        "Grete",
-        "Karl Martin"
-    ]);
+        setTootajad(tootajadFailist);
     }
     function sorteeriAZ() {
-        tootajad.sort((a, b) => a.localeCompare(b));
+        tootajad.sort((a, b) => a.nimi.localeCompare(b.nimi));
         setTootajad(tootajad.slice());
     }
     function sorteeriZA() {
-        tootajad.sort((a, b) => b.localeCompare(a));
+        tootajad.sort((a, b) => b.nimi.localeCompare(a.nimi));
         setTootajad(tootajad.slice());
     }
     function sorteeriTahedKasvavalt() {
-        tootajad.sort((a, b) => a.length - b.length);
+        tootajad.sort((a, b) => a.nimi.length - b.nimi.length);
         setTootajad(tootajad.slice());
     }
 
     function sorteeriTahedKahanevalt() {
-        tootajad.sort((a, b) => b.length - a.length);
+        tootajad.sort((a, b) => b.nimi.length - a.nimi.length);
         setTootajad(tootajad.slice());
     }
     function sorteeriTeineTahtAZ() {
-        tootajad.sort((a, b) => a[1].localeCompare(b[1]));
+        tootajad.sort((a, b) => a.nimi[1].localeCompare(b.nimi[1]));
         setTootajad(tootajad.slice());
     }
     function sorteeriSonaArvuJargi() {
-        tootajad.sort((a, b) => b.split(" ").length - a.split(" ").length);
+        tootajad.sort((a, b) => b.nimi.split(" ").length - a.nimi.split(" ").length);
         setTootajad(tootajad.slice());
     }
 
 
     function filtreeriKolmetahelised() {
-        const vastus = tootajad.filter(tootaja => tootaja.length === 3);
+        const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length === 3);
         setTootajad(vastus);
     }
 
     function filtreeriRohkemkuiViietahelised() {
-        const vastus = tootajad.filter(tootaja => tootaja.length > 5);
+        const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length > 5);
         setTootajad(vastus);
     }
 
     function filtreeriRTsisaldavad() {
-        const vastus = tootajad.filter(tootaja => tootaja.includes("rt"));
+        const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.includes("rt"));
         setTootajad(vastus);
     }
 
     function filtreeriNeljasR() {
-        const vastus = tootajad.filter(tootaja => tootaja[3] === "r");
+        const vastus = tootajadFailist.filter(tootaja => tootaja.nimi[3] === "r");
         setTootajad(vastus);
     }
 
     function filtreeriMgaAlgavad() {
-        const vastus = tootajad.filter(tootaja => tootaja.startsWith("M"));
+        const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.startsWith("M"));
         setTootajad(vastus);
     }
 
     function filtreeriPaarisArvTahti() {
-        const vastus = tootajad.filter(tootaja => {
-            const tahed = tootaja.toLowerCase().replaceAll(" ", "");
+        const vastus = tootajadFailist.filter(tootaja => {
+            const tahed = tootaja.nimi.toLowerCase().replaceAll(" ", "");
             for (let i = 0; i < tahed.length -1; i++) {
                 if (tahed[i] === tahed[i + 1]) {
                     return true;
@@ -93,9 +77,17 @@ function Tootajad() {
         setTootajad(vastus);
     }
 
+    function otsi() {
+        const vastus = tootajadFailist.filter(tootaja =>
+            tootaja.nimi.toLocaleLowerCase().includes(otsingRef.current.value.toLocaleLowerCase())
+        );
+        setTootajad(vastus)
+    }
+
   return (
     <div>
         <ArraysHome />
+        <input onChange={otsi} ref={otsingRef} type="text" />
         <button onClick={reset} >Reset</button>
         <br /> <br />
         <button onClick={sorteeriAZ}>Sorteeri AZ</button>
@@ -115,9 +107,16 @@ function Tootajad() {
         <button onClick={filtreeriPaarisArvTahti}>Näita kõrvuti kaks sama tähte</button>
     
         <div>Meil on {tootajad.length} töötajat!</div>
-        <div>{tootajad.map(tootaja => <div key={tootaja}>{tootaja}</div>)} </div>
+        <div>{tootajad.map(tootaja => <div key={tootaja.nimi}>{tootaja.nimi}
+            <Link to={"/yks-tootaja/" + tootaja.nimi}>
+                <button>Vaata lähemalt</button>
+            </Link>
+        </div>)} </div>
     </div>
   )
 }
 
 export default Tootajad
+
+
+// FAILIS: nimi, vanus, ametikoht

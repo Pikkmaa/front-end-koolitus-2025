@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import autodFailist from "../../data/autod.json"
 import HaldaHome from "./HaldaHome";
+import { ToastContainer, toast } from 'react-toastify';
+import {Link} from 'react-router-dom'
 
 
 function HaldaAutod() {
@@ -16,6 +18,14 @@ function HaldaAutod() {
     }
 
     function lisa() {
+        if (autodRef.current.value === "") {
+            toast("Auto nimi ei tohi olla tühi");
+            return;
+        }
+        if (hindRef.current.value <= 0) {
+            toast("Hind ei tohi olla negatiivne!");
+            return;
+        }
         autodFailist.push({
             "nimi": autodRef.current.value,
             "hind": Number(hindRef.current.value),
@@ -23,6 +33,7 @@ function HaldaAutod() {
             "pilt": piltRef.current.value
         });
         setAutod(autodFailist.slice())
+        toast("Uus auto lisatud!");
     }
 
 
@@ -30,18 +41,20 @@ function HaldaAutod() {
   return (
     <div>
         < HaldaHome />
+        <div className="vorm">
         <label>Auto nimi</label>
-        <input ref={autodRef} type="text" /> <br />
+        <input ref={autodRef} type="text" />
 
         <label>Auto hind</label>
-        <input ref={hindRef} type="number" /> <br />
+        <input ref={hindRef} type="number" />
 
         <label>Auto pilt</label>
-        <input ref={piltRef} type="text" /> <br/>
+        <input ref={piltRef} type="text" />
 
         <label>Auto aktiivne</label>
-        <input ref={aktiivneRef} type="checkbox" /> <br />
+        <input ref={aktiivneRef} type="checkbox" />
         <button onClick={lisa}>Sisesta</button>
+        </div>
 
         <div>Autode arv: {autod.length} tk.</div>
         <table className="halda-tabel">
@@ -53,22 +66,29 @@ function HaldaAutod() {
                     <th>Auto hind</th>
                     <th>Auto aktiivne</th>
                     <th>Auto pilt</th>
+                    <th>Muuda</th>
                     <th>Kustuta</th>
                 </tr>
                 </thead>
             <tbody>
                 {autod.map((auto, index) =>
-                <tr key={auto}>
+                <tr key={auto.nimi}>
                     <td>{index+1}.</td>
                     <td>{index}</td>
                     <td>{auto.nimi}</td>
                     <td>{auto.hind}</td>
                     <td>{auto.aktiivne ? "Aktiivnee" : "Mitteaktiivne"}</td>
                     <td><img className="halda-toote-pilt" src={auto.pilt} alt="" /></td>
+                    <td className="redigeeri-nupp">
+                      <Link to={"/muuda-auto/" + auto.nimi}>
+                      <img src="/edit.svg" alt="" />
+                      </Link>
+                    </td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
                 </tr>)}
             </tbody>
         </table>
+        <ToastContainer/>
     </div>
   )
 }

@@ -1,12 +1,11 @@
 [
-        49.99,
-        17.25,
-        11.89,
-        32.45,
-        8.99,
-        129.00,
-        14.50,
-        39.95,
-        27.75,
-        6.40
+    { "number": 17.25, "sonana": "seitseteist koma kakskümmend viis" },
+    { "number": 11.89, "sonana": "üksteist koma kaheksakümmend üheksa" },
+    { "number": 32.45, "sonana": "kolmkümmend kaks koma nelikümmend viis" },
+    { "number": 8.99, "sonana": "kaheksa koma üheksakümmend üheksa" },
+    { "number": 129.00, "sonana": "ükssada kakskümmend üheksa koma null null" },
+    { "number": 14.50, "sonana": "neliteist koma viiskümmend" },
+    { "number": 39.95, "sonana": "kolmkümmend üheksa koma üheksakümmend viis" },
+    { "number": 27.75, "sonana": "kakskümmend seitse koma seitsekümmend viis" },
+    { "number": 6.40, "sonana": "kuus koma nelikümmend" }
 ]

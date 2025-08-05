@@ -21,6 +21,14 @@ function Ostukorv() {
     ostukorvFailist.splice(0);
     setTooted(ostukorvFailist.slice());
   }
+
+  function arvutaKokku() {
+    let sum = 0;
+    tooted.forEach(toode => sum = sum + toode.hind);
+    return sum;
+  }
+
+
   return (
   <div>
     {tooted.length > 0 &&
@@ -32,10 +40,11 @@ function Ostukorv() {
 
       {tooted.length === 0 && <div>Ostukorv on tühi</div>}
       {tooted.map((toode, index) =>
-      <div key={toode}>
-        {toode.nimi}
+      <div key={toode.nimi}>
+        {toode.nimi} - {toode.hind}
         <button onClick={() => kustuta(index)}>x</button>
         </div> )}
+        {tooted.length > 0 && <div>Ostukorvi kogu summa: {arvutaKokku()} €</div>}
   </div>
   )
 }

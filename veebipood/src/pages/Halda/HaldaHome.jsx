@@ -10,7 +10,6 @@ function HaldaHome() {
         <Link to="/halda-kasutajad"><span className="link">Kasutajad</span></Link>
         <Link to="/halda-tootajad"><span className="link">Töötajad</span></Link>
         <Link to="/halda-tooted"><span className="link">Tooted</span></Link>
-        <br /> <br />
     </div>
   )
 }

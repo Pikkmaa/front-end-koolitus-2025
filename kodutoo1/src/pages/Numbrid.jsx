@@ -30,32 +30,32 @@ function Numbrid() {
     function filtreeriSuuremadKui8() {
     const vastus = numbrid.filter(num => num > 8);
     setNumbrid(vastus);
-}
+    }
 
-function filtreeriVäiksemadKui10() {
-    const vastus = numbrid.filter(num => num < 10);
-    setNumbrid(vastus);
-}
+    function filtreeriVäiksemadKui10() {
+        const vastus = numbrid.filter(num => num < 10);
+        setNumbrid(vastus);
+    }
 
-function filtreeriPaarisArvud() {
-    const vastus = numbrid.filter(num => num % 2 === 0);
-    setNumbrid(vastus);
-}
+    function filtreeriPaarisArvud() {
+        const vastus = numbrid.filter(num => num % 2 === 0);
+        setNumbrid(vastus);
+    }
 
-function filtreeripaaritudArvud() {
-    const vastus = numbrid.filter(num => num % 2 !== 0);
-    setNumbrid(vastus);
-}
+    function filtreeripaaritudArvud() {
+        const vastus = numbrid.filter(num => num % 2 !== 0);
+        setNumbrid(vastus);
+    }
 
-function filtreeriYhegaAlgavad() {
-    const vastus = numbrid.filter(num => num.toString().startsWith('1'));
-    setNumbrid(vastus);
-}
+    function filtreeriYhegaAlgavad() {
+        const vastus = numbrid.filter(num => num.toString().startsWith('1'));
+        setNumbrid(vastus);
+    }
 
-function filtreeriSisasldavadKolme() {
-    const vastus = numbrid.filter(num => num.toString().includes('3'));
-    setNumbrid(vastus);
-}
+    function filtreeriSisasldavadKolme() {
+        const vastus = numbrid.filter(num => num.toString().includes('3'));
+        setNumbrid(vastus);
+    }
 
   return (
     <div>

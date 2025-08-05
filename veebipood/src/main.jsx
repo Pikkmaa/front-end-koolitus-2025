@@ -26,7 +26,7 @@ createRoot(document.getElementById('root')).render(
 // 8. 23.07 - DISAINER
 // 9. E 28.07 - arrays, tabel
 //10. N 31.07 - kustutamine, lisamine, fail, objektid
-//11. E 04.08
+//11. E 04.08 - Objektid, kontrollid, kokkuarvutus, postify, otsing
 //12. K 06.08
 //13. T 12.08
 //14. R 15.08
