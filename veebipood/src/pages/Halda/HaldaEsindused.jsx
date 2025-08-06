@@ -67,7 +67,7 @@ function HaldaEsindused() {
                     <td>{esindus.tel}</td>
                     <td>{esindus.aadress}</td>
                     <td className="redigeeri-nupp">
-                      <Link to={"/muuda-esindus/" + esindus.keskus}>
+                      <Link to={"/muuda-esindus/" + index}>
                       <img src="/edit.svg" alt="" />
                       </Link>
                     </td>

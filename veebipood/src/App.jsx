@@ -34,12 +34,29 @@ import YksKasutaja from './pages/yks/YksKasutaja.jsx'
 import YksTootaja from './pages/yks/YksTootaja.jsx'
 import YksToode from './pages/yks/YksToode.jsx'
 import MuudaKasutaja from './pages/muuda/MuudaKasutaja.jsx'
+import { useState } from 'react'
 
 function App() {
+  const [tume, setTume ] = useState(JSON.parse(localStorage.getItem("tume")));
+
+
+  function tumedaks() {
+    setTume(true);
+    localStorage.setItem("tume", JSON.stringify(true))
+
+  }
+
+  function heledaks() {
+    setTume(false);
+    localStorage.setItem("tume", JSON.stringify(false))
+
+  }
 
   return (
-    <>
+    <div className={tume ? 'tume' : undefined}>
      < Menu />
+     <button onClick={tumedaks}>Tumedaks</button>
+     <button onClick={heledaks}>Heledaks</button>
 
 
 
@@ -85,7 +102,7 @@ function App() {
 
         <Route path='/*' element= { <NotFound /> } />
       </Routes>
-    </>
+    </div>
   )
 }
 

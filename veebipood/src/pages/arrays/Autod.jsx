@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import ArraysHome from "./ArraysHome"
 import autodFailist from "../../data/autod.json"
-import ostukorvFailist from '../../data/ostukorv.json'
+// import ostukorvFailist from '../../data/ostukorv.json'
 import {Link} from 'react-router-dom'
 
 function Autod() {
@@ -77,7 +77,10 @@ function Autod() {
     }
 
     function lisaOstukorvi(toode) {
-        ostukorvFailist.push(toode);
+        //ostukorvFailist.push(toode);
+        const ostukorvLS = JSON.parse(localStorage.getItem("ostukorv")) || [];
+        ostukorvLS.push(toode);
+        localStorage.setItem("ostukorv", JSON.stringify(ostukorvLS));
     }
 
     function arvutaKokku() {

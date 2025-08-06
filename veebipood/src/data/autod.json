@@ -5,7 +5,7 @@
     {"nimi": "BMW", "hind": 40000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/2be5a5ed-6e3a-4b28-98c7-158e42e1f94e/0_0.png"},
     {"nimi": "Mercedes-Benz", "hind": 120000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/8dc1c057-875f-4210-be7e-724f3333c4f3/0_0.png"},
     {"nimi": "Audi", "hind": 47000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/9d593533-3d77-49b8-a1c6-1882d4c7f59e/0_0.png"},
-    {"nimi": "Chevrolet", "hind": 18000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/b0b2a89e-3c9d-4436-bf64-938b2e5a43e0/0_0.png"},
+    {"nimi": "Chevrolet", "hind": 18000, "aktiivne": false, "pilt": "https://cdn.midjourney.com/b0b2a89e-3c9d-4436-bf64-938b2e5a43e0/0_0.png"},
     {"nimi": "Hyundai", "hind": 27000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/9c0132d3-1431-47b8-a26f-ccf169412f62/0_0.png"},
     {"nimi": "Nissan", "hind": 36000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/3276ca09-85fd-46e9-bf55-29eb3f79192f/0_1.png"},
     {"nimi": "Volkswagen", "hind": 32000, "aktiivne": true, "pilt": "https://cdn.midjourney.com/f701990a-b795-4c7b-9e77-64acf4c997ab/0_3.png"},

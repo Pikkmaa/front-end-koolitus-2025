@@ -19,11 +19,11 @@ function HaldaAutod() {
 
     function lisa() {
         if (autodRef.current.value === "") {
-            toast("Auto nimi ei tohi olla tühi");
+            toast.error("Auto nimi ei tohi olla tühi");
             return;
         }
         if (hindRef.current.value <= 0) {
-            toast("Hind ei tohi olla negatiivne!");
+            toast.error("Hind peab olema positiivne!");
             return;
         }
         autodFailist.push({
@@ -33,7 +33,7 @@ function HaldaAutod() {
             "pilt": piltRef.current.value
         });
         setAutod(autodFailist.slice())
-        toast("Uus auto lisatud!");
+        toast.success("Uus auto lisatud!");
     }
 
 
@@ -80,7 +80,7 @@ function HaldaAutod() {
                     <td>{auto.aktiivne ? "Aktiivnee" : "Mitteaktiivne"}</td>
                     <td><img className="halda-toote-pilt" src={auto.pilt} alt="" /></td>
                     <td className="redigeeri-nupp">
-                      <Link to={"/muuda-auto/" + auto.nimi}>
+                      <Link to={"/muuda-auto/" + index}>
                       <img src="/edit.svg" alt="" />
                       </Link>
                     </td>

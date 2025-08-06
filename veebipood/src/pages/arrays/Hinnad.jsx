@@ -69,8 +69,8 @@ function Hinnad() {
         <button onClick={filtreeriVaiksemadKui50} >Filtreeri väiksemad kui 50</button>
         <button onClick={filtreeriSuuremadKui30} >Filtreeri suuremad kui 30</button>
 
-        {hinnad.map(hind => <div key={hind.number}>{hind.number.toFixed(2)}
-            <Link to={"/yks-hind/" + hind.number}>
+        {hinnad.map((hind, index)=> <div key={hind.number}>{hind.number.toFixed(2)}
+            <Link to={"/yks-hind/" + index}>
             <button>Vaata lähemalt</button>
         </Link>
         </div> )}

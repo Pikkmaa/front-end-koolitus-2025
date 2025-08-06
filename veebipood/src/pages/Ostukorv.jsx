@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ostukorvFailist from '../data/ostukorv.json'
+//import ostukorvFailist from '../data/ostukorv.json'
 
 // renderdamine - esmakordselt lehele tulek, HTML-i välja näitamine, väga palju tööd, sest kuvab kogu HTML-i välja
 
@@ -10,16 +10,18 @@ import ostukorvFailist from '../data/ostukorv.json'
 
 
 function Ostukorv() {
-  const [tooted, setTooted] = useState(ostukorvFailist.slice());
+  const [tooted, setTooted] = useState(JSON.parse(localStorage.getItem("ostukorv")) || [] );
 
   function kustuta(index) {
-    ostukorvFailist.splice(index,1);
-    setTooted(ostukorvFailist.slice());
+    tooted.splice(index,1);
+    setTooted(tooted.slice());
+    localStorage.setItem("ostukorv", JSON.stringify(tooted));
   }
 
   function tyhjenda() {
-    ostukorvFailist.splice(0);
-    setTooted(ostukorvFailist.slice());
+    tooted.splice(0);
+    setTooted(tooted.slice());
+    localStorage.setItem("ostukorv", JSON.stringify(tooted));
   }
 
   function arvutaKokku() {

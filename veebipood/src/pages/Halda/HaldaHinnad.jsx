@@ -61,7 +61,7 @@ function HaldaHinnad() {
                     <td>{hind.number}</td>
                     <td>{hind.sonana}</td>
                     <td className="redigeeri-nupp">
-                      <Link to={"/muuda-hind/" + hind.number}>
+                      <Link to={"/muuda-hind/" + index}>
                       <img src="/edit.svg" alt="" />
                       </Link>
                     </td>
