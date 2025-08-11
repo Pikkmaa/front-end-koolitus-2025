@@ -73,7 +73,7 @@ function HaldaKasutajad() {
                     <td>{kasutaja.email}</td>
                     <td>{kasutaja.parool}</td>
                     <td className="redigeeri-nupp">
-                      <Link to={"/muuda-kasutaja/" + kasutaja.kasutajanimi}>
+                      <Link to={"/muuda-kasutaja/" + index}>
                       <img src="/edit.svg" alt="" />
                       </Link>
                     </td>

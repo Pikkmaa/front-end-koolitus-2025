@@ -73,7 +73,7 @@ function HaldaTootajad() {
                     <td>{tootaja.vanus}</td>
                     <td>{tootaja.ametikoht}</td>
                     <td className="redigeeri-nupp">
-                      <Link to={"/muuda-tootaja/" + tootaja.nimi}>
+                      <Link to={"/muuda-tootaja/" + index}>
                       <img src="/edit.svg" alt="" />
                       </Link>
                     </td>

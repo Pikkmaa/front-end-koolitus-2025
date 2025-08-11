@@ -85,7 +85,7 @@ function HaldaTooted() {
                   <img className="halda-toote-pilt" src={toode.pilt} alt={toode.nimi} />
                 </td>
                 <td className="redigeeri-nupp" >
-                  <Link to={"/muuda-toode/" + toode.nimi}>
+                  <Link to={"/muuda-toode/" + index}>
                     <img src="/edit.svg" alt="" />
                 </Link>
                 </td>
