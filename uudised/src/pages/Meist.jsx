@@ -2,10 +2,30 @@ import { useState } from "react"
 
 function Meist() {
   const [kontakt, showKontakt] = useState("");
+  const [valitud, setValitud] = useState("");
   const [sonum, setSonum] = useState("Vali mõni tegevus")
+
+  function v6taYhendust(tootaja) {
+    showKontakt(tootaja.telefon);
+    setValitud(tootaja.nimi);
+
+  }
+  const tootajad = [
+    {"nimi": "Arvo", "ala": "Muusika", "telefon": "Täpsustamisel"},
+    {"nimi": "Kelly", "ala": "Reporter", "telefon": "Täpsustamisel"},
+    {"nimi": "Edward", "ala": "Kujundus", "telefon": "Täpsustamisel"},
+    {"nimi": "Kerly", "ala": "Välisturundus", "telefon": "Täpsustamisel"},
+    {"nimi": "Madis", "ala": "Arendaja", "telefon": "Täpsustamisel"}
+  ]
   return (
     <div>
-    <div>See on meist leht, nähtav localhost:5173 aadressil</div>
+      <div >{tootajad.map(tootaja =>
+          <div className={tootaja.nimi === valitud ? "valitud": undefined}>
+            {tootaja.nimi} {tootaja.ala}
+            <button onClick={()=> v6taYhendust(tootaja)} >Võta ühendust</button>
+            </div>)}
+        </div>
+   {/*  <div>See on meist leht, nähtav localhost:5173 aadressil</div>
     <br />
 
     <div>Meil on kontrollitud allikad</div>
@@ -22,7 +42,7 @@ function Meist() {
     <div>Saada oma vihje aadressile</div>
     <div>email: vihjed@uudised.ee</div>
     <button onClick={() => showKontakt('900 237 06')}>Võta ühendust</button>
-    <br />
+    <br /> */}
 
    { kontakt !== "" && <div>Tema kontakt: {kontakt} </div>} <br />
 
