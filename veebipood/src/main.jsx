@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import "leaflet/dist/leaflet.css"
+import './index.css';
+import './i18n';
 import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom"
 
@@ -28,9 +30,9 @@ createRoot(document.getElementById('root')).render(
 //10. N 31.07 - kustutamine, lisamine, fail, objektid
 //11. E 04.08 - Objektid, kontrollid, kokkuarvutus, toastify, otsing
 //12. K 06.08 - useParams (Yksiku leht), muutmine, localStorage
-//13. K 13.08 kell: 9.00 -
-//14. R 15.08 kell 9.00 -
-//15. E 18.08
-//16. N 20.08
-//17. E 25.08
+//13. K 13.08 kell: 9.00 - tõlge, kaardirakendus, emaili saatmine
+//14. R 15.08 kell 8.45 - API
+//15. T 19.08 - inglise keelse Webshopi tegemine
+//16. R 22.08
+//17. T 26.08
 //18. K 03.09 - ametlik lõpukuupäev

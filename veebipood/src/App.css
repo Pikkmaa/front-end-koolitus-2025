@@ -139,3 +139,25 @@
   color: white;
   min-height: 100vh;
 }
+
+.ikoon {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.ikoon:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.ikoon:active {
+  transform: scale(90%);
+}
+
+.map {
+  height: 300px;
+  margin: 3%;
+  border-radius: 10px;
+  filter: grayscale(70%);
+}

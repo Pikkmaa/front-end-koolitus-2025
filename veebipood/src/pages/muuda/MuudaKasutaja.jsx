@@ -17,11 +17,15 @@ function MuudaKasutaja() {
 
   function muuda() {
       if (nimiRef.current.value === "") {
-          toast.error("Kasutjanimi ei tohi olla tühi");
+          toast.error("Kasutajanimi ei tohi olla tühi");
           return;
       }
       if (emailRef.current.value === "") {
           toast.error("Email ei tohi olla tühi");
+          return;
+      }
+      if (paroolRef.current.value === "") {
+          toast.error("Kasutajal peab olema parool");
           return;
       }
       kasutajadFailist[name]= {

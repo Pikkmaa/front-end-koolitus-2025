@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useTranslation } from 'react-i18next';
 //import ostukorvFailist from '../data/ostukorv.json'
 
 // renderdamine - esmakordselt lehele tulek, HTML-i välja näitamine, väga palju tööd, sest kuvab kogu HTML-i välja
@@ -10,6 +11,7 @@ import { useState } from "react"
 
 
 function Ostukorv() {
+  const { t } = useTranslation();
   const [tooted, setTooted] = useState(JSON.parse(localStorage.getItem("ostukorv")) || [] );
 
   function kustuta(index) {
@@ -35,18 +37,18 @@ function Ostukorv() {
   <div>
     {tooted.length > 0 &&
       <div>
-        <button onClick={tyhjenda} >Tühjenda</button>
+        <button onClick={tyhjenda} >{t("cart.empty-button")}</button>
         <div>Ostukorvis on {tooted.length} toodet</div>
       </div>
     }
 
-      {tooted.length === 0 && <div>Ostukorv on tühi</div>}
+      {tooted.length === 0 && <div>{t("cart.text")}</div>}
       {tooted.map((toode, index) =>
       <div key={toode.nimi}>
         {toode.nimi} - {toode.hind}
         <button onClick={() => kustuta(index)}>x</button>
         </div> )}
-        {tooted.length > 0 && <div>Ostukorvi kogu summa: {arvutaKokku()} €</div>}
+        {tooted.length > 0 && <div>{t("cart.total")}: {arvutaKokku()} €</div>}
   </div>
   )
 }

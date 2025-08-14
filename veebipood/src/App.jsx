@@ -35,6 +35,8 @@ import YksTootaja from './pages/yks/YksTootaja.jsx'
 import YksToode from './pages/yks/YksToode.jsx'
 import MuudaKasutaja from './pages/muuda/MuudaKasutaja.jsx'
 import { useState } from 'react'
+import Email from './pages/Email.jsx'
+import Kaart from './pages/Kaart.jsx'
 
 function App() {
   const [tume, setTume ] = useState(JSON.parse(localStorage.getItem("tume")));
@@ -99,6 +101,9 @@ function App() {
         <Route path='/yks-kasutaja/:name' element= { <YksKasutaja /> } />
         <Route path='/yks-tootaja/:name' element= { <YksTootaja /> } />
         <Route path='/yks-toode/:name' element= { <YksToode /> } />
+
+        <Route path='/email' element= { <Email /> } />
+        <Route path='/kaart' element= { <Kaart /> } />
 
         <Route path='/*' element= { <NotFound /> } />
       </Routes>
