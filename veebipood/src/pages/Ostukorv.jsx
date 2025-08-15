@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react"
 import { useTranslation } from 'react-i18next';
 //import ostukorvFailist from '../data/ostukorv.json'
@@ -13,6 +15,20 @@ import { useTranslation } from 'react-i18next';
 function Ostukorv() {
   const { t } = useTranslation();
   const [tooted, setTooted] = useState(JSON.parse(localStorage.getItem("ostukorv")) || [] );
+  const [pakiautomaadid, setPakiautomaadid] = useState([]);
+  const [dbpakiautomaadid, setDbPakiautomaadid] = useState([]);
+  const [riik, setRiik] = useState("EE");
+  const otsingRef = useRef();
+
+  useEffect(() => {
+    fetch('https://www.omniva.ee/locations.json')
+    .then(res => res.json())
+    .then(json => {
+      setPakiautomaadid(json);
+      setDbPakiautomaadid(json);
+    })
+    
+  }, []);
 
   function kustuta(index) {
     tooted.splice(index,1);
@@ -32,6 +48,13 @@ function Ostukorv() {
     return sum;
   }
 
+  function otsi() {
+    const vastus = dbpakiautomaadid
+    .filter(automaat => automaat.NAME
+      .includes(otsingRef.current.value));
+    setPakiautomaadid(vastus);
+  }
+
 
   return (
   <div>
@@ -49,6 +72,22 @@ function Ostukorv() {
         <button onClick={() => kustuta(index)}>x</button>
         </div> )}
         {tooted.length > 0 && <div>{t("cart.total")}: {arvutaKokku()} €</div>}
+
+        <label>Otsi pakiautomaatide seast</label>
+        <input onChange={otsi} ref={otsingRef} type="text" />
+
+
+        <button onClick={() => setRiik("EE")}>Eesti</button>
+        <button onClick={() => setRiik("LV")}>Läti</button>
+        <button onClick={() => setRiik("LT")}>Leedu</button>
+
+
+
+        <select>
+          {pakiautomaadid
+          .filter(automaat => automaat.A0_NAME === riik)
+          .map(automaat => <option key={automaat.NAME}>{automaat.NAME}</option> )}
+        </select>
   </div>
   )
 }

@@ -161,3 +161,16 @@
   border-radius: 10px;
   filter: grayscale(70%);
 }
+
+.carousel {
+  width: 500px;
+  margin: auto;
+}
+
+.carousel img {
+  height: 300px;
+}
+
+.MuiButton-outlined {
+  background-color: white !important;
+}

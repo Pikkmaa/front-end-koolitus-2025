@@ -1,72 +1,32 @@
-import {Link} from 'react-router-dom'
-import { useTranslation } from 'react-i18next';
-import english from '../assets/english.png';
-import estonian from '../assets/estonian.png';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import {Link} from 'react-router-dom';
+
+
 function Menu() {
-  const { t, i18n } = useTranslation();
-  //return <h1>{t('Welcome to React')}</h1>
-
-  function muudaKeelEN () {
-    i18n.changeLanguage("en");
-    localStorage.setItem("keel", "en");
-  }
-
-  function muudaKeelET () {
-    i18n.changeLanguage("et");
-    localStorage.setItem("keel", "et");
-  }
   return (
-    <div>
-      <img className="ikoon" onClick={muudaKeelEN} src= {english} alt="" />
-      <img className="ikoon" onClick={muudaKeelET} src= {estonian} alt="" />
-         <Link to= "/">
-      <img className="pilt" src="https://yamahakeskus.ee/files/_page_pics_origs/burovi6804d9598ab21.jpg" alt="" />
-      </Link>
-      
-      <Link to= "/esindused">
-      <button>{t("nav.shops")}</button>
-      </Link>
-
-      <Link to= "/osta-kinkekaarti">
-      <button>{t("nav.gift-cards")}</button>
-      </Link>
-
-      <Link to= "/lisa-toode">
-      <button>{t("nav.add-product")}</button>
-      </Link>
-
-      <Link to= "/seaded">
-      <button>{t("nav.settings")}</button>
-      </Link>
-
-      <Link to= "/ostukorv">
-      <button>{t("nav.cart")}</button>
-      </Link>
-
-      <Link to= "/kalkulaator">
-      <button>{t("nav.calculator")}</button>
-      </Link>
-
-      <Link to= "/arrays">
-      <button>Arrays</button>
-      </Link>
-
-      <Link to= "/halda">
-      <button>Halda</button>
-      </Link>
-
-      <Link to= "/email">
-      <button>Email</button>
-      </Link>
-
-      <Link to= "/kaart">
-      <button>Kaart</button>
-      </Link>
-
-
-
-    </div>
-  )
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand as={Link} to="/">Avaleht</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/ostukorv">Ostukorv</Nav.Link>
+            <Nav.Link as={Link} to="/seaded">Seaded</Nav.Link>
+            <Nav.Link as={Link} to="/email">Email</Nav.Link>
+            <Nav.Link as={Link} to="/kaart">Kaart</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link as={Link} to="/osta-kinkekaarti">Kinkekaardid</Nav.Link>
+            <Nav.Link as={Link} to="/arrays">Arrays</Nav.Link>
+            <Nav.Link as={Link} to="/halda">Halda</Nav.Link>
+            <Nav.Link as={Link} to="/api-home">API</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
-export default Menu
+export default Menu;

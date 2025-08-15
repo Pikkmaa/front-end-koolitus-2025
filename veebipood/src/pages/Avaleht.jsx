@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import KarusellGalerii from '../components/KarusellGalerii';
 function Avaleht() {
     const [kogus, setKogus] = useState(0);
     const [sonum, setSonum] = useState("Uuenda kogust");
@@ -21,6 +22,7 @@ function Avaleht() {
     }
   return (
     <div>
+      < KarusellGalerii />
 
         <br /><br />
 

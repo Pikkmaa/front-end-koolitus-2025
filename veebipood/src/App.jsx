@@ -1,5 +1,6 @@
 import './App.css'
 import { Route, Routes } from "react-router-dom"
+import {Button} from '@mui/material'
 import Avaleht from './pages/Avaleht'
 import Esindused from './pages/arrays/Esindused'
 import Ostukorv from './pages/Ostukorv'
@@ -37,6 +38,15 @@ import MuudaKasutaja from './pages/muuda/MuudaKasutaja.jsx'
 import { useState } from 'react'
 import Email from './pages/Email.jsx'
 import Kaart from './pages/Kaart.jsx'
+import ApiHome from './pages/api/ApiHome.jsx'
+import Books from './pages/api/Books.jsx'
+import Cars from './pages/api/Cars.jsx'
+import Countries from './pages/api/Countries.jsx'
+import Products1 from './pages/api/Products1.jsx'
+import Products2 from './pages/api/Products2.jsx'
+import Products3 from './pages/api/Products3.jsx'
+import Vocabulary from './pages/api/Vocabulary.jsx'
+
 
 function App() {
   const [tume, setTume ] = useState(JSON.parse(localStorage.getItem("tume")));
@@ -57,8 +67,9 @@ function App() {
   return (
     <div className={tume ? 'tume' : undefined}>
      < Menu />
-     <button onClick={tumedaks}>Tumedaks</button>
-     <button onClick={heledaks}>Heledaks</button>
+     <Button variant='contained' onClick={tumedaks}>Tumedaks</Button>
+     <Button variant='outlined' onClick={heledaks}>Heledaks</Button>
+     <br /><br />
 
 
 
@@ -101,6 +112,15 @@ function App() {
         <Route path='/yks-kasutaja/:name' element= { <YksKasutaja /> } />
         <Route path='/yks-tootaja/:name' element= { <YksTootaja /> } />
         <Route path='/yks-toode/:name' element= { <YksToode /> } />
+
+        <Route path='/api-home' element= { <ApiHome/> } />
+        <Route path='/books' element= { <Books /> } />
+        <Route path='/cars' element= { <Cars /> } />
+        <Route path='/countries' element= { <Countries /> } />
+        <Route path='/products1' element= { <Products1 /> } />
+        <Route path='/products2' element= { <Products2 /> } />
+        <Route path='/products3' element= { <Products3 /> } />
+        <Route path='/vocabulary' element= { <Vocabulary /> } />
 
         <Route path='/email' element= { <Email /> } />
         <Route path='/kaart' element= { <Kaart /> } />
