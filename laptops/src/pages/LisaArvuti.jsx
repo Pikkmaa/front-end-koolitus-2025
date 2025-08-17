@@ -1,11 +1,25 @@
+import { useRef } from "react";
 import { useState } from "react"
 
 function LisaArvuti() {
     const [sonum, setSonum] = useState("Lisa arvuti");
-    const [n2itanuppu, setN2itanuppu] = useState(true);
+    const markRef = useRef();
+    const mudelRef = useRef();
+    const maksumusRef = useRef();
+    
+    
     function addProduct() {
         setSonum("Arvuti lisatud!");
-        setN2itanuppu(false);
+        const uusArvuti = {
+          "mark": markRef.current.value,
+          "mudel": mudelRef.current.value,
+          "maksumus": maksumusRef.current.value,
+        }
+
+        const arvutid = JSON.parse(localStorage.getItem("laptops")) || [];
+        arvutid.push(uusArvuti);
+        localStorage.setItem("laptops", JSON.stringify(arvutid));
+
     }
 
 
@@ -13,12 +27,12 @@ function LisaArvuti() {
     <div>
         <div>Sõnum: {sonum}</div>
         <label>Mark</label> <br />
-        <input type="text" /> <br />
+        <input ref={markRef} type="text" /> <br />
         <label>Mudel</label> <br />
-        <input type="text"/> <br />
+        <input ref={mudelRef} type="text"/> <br />
         <label>Maksumus</label> <br />
-        <input type="number" /> <br />
-        {n2itanuppu === true && <button onClick={() => addProduct()} >Sisesta</button>}
+        <input ref={maksumusRef} type="number" /> <br />
+        <button onClick={() => addProduct()} >Sisesta</button>
     </div>
   )
 }
