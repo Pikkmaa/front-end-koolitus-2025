@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-function Products2() {
+function Products3() {
 
     const [tooted, setTooted] = useState([]);
 
     useEffect(() => {
-        fetch("https://api.escuelajs.co/api/v1/products")
+        fetch("https://dummyjson.com/products?limit=20")
         .then(res => res.json())
         .then(json => setTooted(json))    
     }, []);
@@ -40,4 +40,4 @@ function Products2() {
   )
 }
 
-export default Products2
+export default Products3
