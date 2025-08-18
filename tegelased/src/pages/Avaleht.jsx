@@ -2,15 +2,21 @@ import { useState } from "react"
 
 function Avaleht() {
     const [klikikud, setKlikitud] = useState("");
-    const tegelased =[
-        {"eesnimi": "Mickey", "perenimi": "Mouse", "elukoht": "Disneyland"},
-        {"eesnimi": "Minnie", "perenimi": "Mouse", "elukoht": "Disneyland"},
-        {"eesnimi": "Winnie", "perenimi": "Pooh", "elukoht": "Hundred Acre Wood"},
-        {"eesnimi": "Roo", "perenimi": "Kangaroo", "elukoht": "Cristal Cove"}
-    ]
+   /*  const tegelased =[
+        {"eesnimi": "Mickey", "perenimi": "Mouse", "elukoht": "Disneyland", "vanus": 20},
+        {"eesnimi": "Minnie", "perenimi": "Mouse", "elukoht": "Disneyland", "vanus": 21},
+        {"eesnimi": "Winnie", "perenimi": "Pooh", "elukoht": "Hundred Acre Wood", "vanus": 22},
+        {"eesnimi": "Roo", "perenimi": "Kangaroo", "elukoht": "Cristal Cove", "vanus": 27}
+    ] */
+    const tegelased = JSON.parse(localStorage.getItem("tegelased")) || [];
     function kuvaNimi(tegelane) {
         console.log(tegelane);
         setKlikitud(tegelane)
+    }
+    function valiTegelane(klikitudTegelane) {
+        const valitud = JSON.parse(localStorage.getItem("valitudTegelane")) || [];
+        valitud.push(klikitudTegelane);
+        localStorage.setItem("valitudTegelane",JSON.stringify(valitud))
     }
 
 
@@ -23,33 +29,11 @@ function Avaleht() {
             {tegelane.eesnimi} <br />
             {tegelane.perenimi} <br />
             {tegelane.elukoht} <br />
+            {tegelane.vanus} <br />
+            <button onClick={() => valiTegelane(tegelane)}>Vali</button>
             <button onClick={()=> kuvaNimi(tegelane.eesnimi)} >Tegelase nimi</button>
             </div>)}
         </div>
-
-    <div>
-        <div>Mickey</div>
-        <div>Mouse</div>
-        <div>Disneyland</div>
-    </div>
-
-    <div>
-        <div>Minnie</div>
-        <div>Mouse</div>
-        <div>Disneyland</div>
-    </div>
-
-    <div>
-        <div>Winnie</div>
-        <div>Pooh</div>
-        <div>Hundred Acre Wood</div>
-    </div>
-
-    <div>
-        <div>Roo</div>
-        <div>Kangaroo</div>
-        <div>Cristal Cove</div>
-    </div>
  </div> )
 }
 
