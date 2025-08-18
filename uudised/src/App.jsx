@@ -11,6 +11,8 @@ import Animals from './pages/Animals'
 import Words from './pages/Words'
 import LisaUudis from './pages/LisaUudis'
 import HaldaUudiseid from './pages/HaldaUudiseid'
+import YksUudis from './pages/YksUudis'
+import MuudaUudist from './pages/MuudaUudist'
 
 function App() {
   const [sisselogitud, setSisselogitud] = useState("ei");
@@ -95,6 +97,8 @@ function App() {
           <Route path='/sonad' element= { < Words /> }/>
           <Route path='/lisa-uudis' element= { < LisaUudis /> }/>
           <Route path='/halda-uudiseid' element= { < HaldaUudiseid /> }/>
+          <Route path='/uudis/:index' element= { < YksUudis /> }/>
+          <Route path='/muuda-uudist/:index' element= { < MuudaUudist /> }/>
         </Routes>
       </div>
     </>
