@@ -18,14 +18,18 @@ function Countries() {
                     <th>ID</th>
                     <th>Riigi nimi</th>
                     <th>Ametlik nimi</th>
+                    <th>Kohalik nimi</th>
                 </tr>
                 </thead>
             <tbody>
                 {riigid.map((riik, index) =>
-                <tr key={riik.name || index}>
+                <tr key={riik.name.common || index}>
                     <td>{index + 1}</td>
                     <td>{riik.name.common}</td>
                     <td>{riik.name.official}</td>
+                    <td>{Object.values(riik.name.nativeName)[0]
+                  ? Object.values(riik.name.nativeName)[0].common
+                  : "—"}</td>
                 </tr>)}
             </tbody>
         </table>

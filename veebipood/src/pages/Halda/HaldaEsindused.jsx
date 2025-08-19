@@ -3,6 +3,7 @@ import esindusedFailist from '../../data/esindused.json';
 import HaldaHome from "./HaldaHome";
 import { ToastContainer, toast } from 'react-toastify';
 import {Link} from 'react-router-dom'
+import {Table} from 'react-bootstrap'
 
 function HaldaEsindused() {
   const [esindused, setEsindused] = useState(esindusedFailist);
@@ -46,7 +47,7 @@ function HaldaEsindused() {
       </div>
 
       <div>Esinduste arv: {esindused.length} tk.</div>
-      <table className="halda-tabel">
+      <Table striped bordered hover>
             <thead>
                 <tr>
                     <th>Järjekorranumber</th>
@@ -74,7 +75,7 @@ function HaldaEsindused() {
                     <td><button onClick={() => kustuta(index)}>x</button></td>
                 </tr>)}
             </tbody>
-        </table>
+        </Table>
         <ToastContainer/>
     </div>
   )

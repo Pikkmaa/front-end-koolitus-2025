@@ -79,7 +79,12 @@ function Autod() {
     function lisaOstukorvi(toode) {
         //ostukorvFailist.push(toode);
         const ostukorvLS = JSON.parse(localStorage.getItem("ostukorv")) || [];
-        ostukorvLS.push(toode);
+        const leitud = ostukorvLS.find(item => item.product.nimi === toode.nimi);
+        if (leitud !== undefined) {
+            leitud.quantity++;
+        } else {
+            ostukorvLS.push({"product": toode, "quantity": 1});
+        }
         localStorage.setItem("ostukorv", JSON.stringify(ostukorvLS));
     }
 

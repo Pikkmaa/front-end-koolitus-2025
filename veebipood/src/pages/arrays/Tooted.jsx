@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ArraysHome from "./ArraysHome"
 import tootedFailist from "../../data/tooted.json"
-import ostukorvFailist from '../../data/ostukorv.json'
+//import ostukorvFailist from '../../data/ostukorv.json'
 import { useRef } from "react";
 import {Link} from 'react-router-dom'
 
@@ -70,7 +70,17 @@ function Tooted() {
     }
 
     function lisaOstukorvi(toode) {
-        ostukorvFailist.push(toode);
+        //ostukorvFailist.push(toode);
+        const ostukorvLS = JSON.parse(localStorage.getItem("ostukorv")) || [];
+        const leitud = ostukorvLS.find(item => item.product.nimi === toode.nimi);
+        if (leitud !== undefined) {
+            leitud.quantity++;
+
+        } else {
+            ostukorvLS.push({"product":toode, "quantity": 1});
+        }
+        
+        localStorage.setItem("ostukorv", JSON.stringify(ostukorvLS));
     }
 
     function otsi() {

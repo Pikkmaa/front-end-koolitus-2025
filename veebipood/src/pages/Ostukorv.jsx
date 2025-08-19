@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react"
 import { useTranslation } from 'react-i18next';
+import minus from '../assets/minus.png'
+import plus from '../assets/plus-sign.png'
+import remove from '../assets/x-mark.png'
 //import ostukorvFailist from '../data/ostukorv.json'
 
 // renderdamine - esmakordselt lehele tulek, HTML-i välja näitamine, väga palju tööd, sest kuvab kogu HTML-i välja
@@ -44,7 +47,7 @@ function Ostukorv() {
 
   function arvutaKokku() {
     let sum = 0;
-    tooted.forEach(toode => sum = sum + toode.hind);
+    tooted.forEach(toode => sum = sum + toode.product.hind * toode.quantity);
     return sum;
   }
 
@@ -55,23 +58,56 @@ function Ostukorv() {
     setPakiautomaadid(vastus);
   }
 
+  function suurendaKogust(index) {
+    tooted[index].quantity++;
+    setTooted(tooted.slice());
+    localStorage.setItem("ostukorv", JSON.stringify(tooted));
+    
+
+  }
+
+  function vahendaKogust(index) {
+    tooted[index].quantity--;
+    if (tooted[index].quantity === 0) {
+      tooted.splice(index,1);
+    }
+    setTooted(tooted.slice());
+    localStorage.setItem("ostukorv", JSON.stringify(tooted));
+
+  }
+
+  function arvutaKogusedKokku() {
+    let sum = 0;
+    tooted.forEach(toode => sum = sum + toode.quantity);
+    return sum;
+  }
+
+
+
 
   return (
   <div>
     {tooted.length > 0 &&
       <div>
         <button onClick={tyhjenda} >{t("cart.empty-button")}</button>
-        <div>Ostukorvis on {tooted.length} toodet</div>
+        <div>Ostukorvis on {tooted.length} erinevat toodet, kokku {arvutaKogusedKokku()} toodet</div>
       </div>
     }
 
       {tooted.length === 0 && <div>{t("cart.text")}</div>}
       {tooted.map((toode, index) =>
-      <div key={toode.nimi}>
-        {toode.nimi} - {toode.hind}
-        <button onClick={() => kustuta(index)}>x</button>
+      <div className="toode" key={toode.nimi}>
+        <div className="nimi" >{toode.product.nimi}</div> <br />
+        <div className="hind" >{toode.product.hind}€</div> <br />
+        <div className="kogus" >
+          <img className= "ikoon" src={minus} onClick={() =>vahendaKogust(index)} alt="" />
+          <div>{toode.quantity} tk</div>  <br />
+          <img className= "ikoon" src={plus} onClick={() =>suurendaKogust(index)} alt="" />
+        </div>
+        <div className="kokku" >{(toode.product.hind * toode.quantity).toFixed(2)}€</div>  <br />
+        <img className= "ikoon" src={remove} onClick={() => kustuta(index)} alt="" />
         </div> )}
-        {tooted.length > 0 && <div>{t("cart.total")}: {arvutaKokku()} €</div>}
+        {tooted.length > 0 && <div>{t("cart.total")}: {arvutaKokku().toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} €</div>}
 
         <label>Otsi pakiautomaatide seast</label>
         <input onChange={otsi} ref={otsingRef} type="text" />

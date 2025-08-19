@@ -174,3 +174,37 @@
 .MuiButton-outlined {
   background-color: white !important;
 }
+
+.toode {
+  display: flex;
+  justify-content: space-between;
+/*   margin-left: 10%;
+  margin-right: 10%; */
+  /* margin: 0 10% 0 10%; */
+  margin: 0 10%;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+  place-items: center;
+}
+
+.nimi {
+  width: 150px;
+
+}
+
+.hind {
+  width: 90px;
+
+}
+
+.kogus {
+  display: flex;
+  width: 125px;
+  justify-content: space-between;
+  place-items: center;
+}
+
+.kokku {
+  width: 100px;
+
+}

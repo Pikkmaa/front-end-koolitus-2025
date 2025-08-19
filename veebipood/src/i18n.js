@@ -12,7 +12,12 @@ const resources = {
       "nav.add-product": "Add product",
       "nav.settings": "Settings",
       "nav.cart": "Cart",
-      "nav.calculator": "Calculator"
+      "nav.calculator": "Calculator",
+      "cart": {
+        "text": "Cart is empty",
+        "total": "Total",
+        "empty-button": "Empty"
+      }
 
     }
   },
@@ -23,7 +28,13 @@ const resources = {
       "nav.add-product": "Lisa toode",
       "nav.settings": "Seaded",
       "nav.cart": "Ostukorv",
-      "nav.calculator": "Kalkulaator"
+      "nav.calculator": "Kalkulaator",
+      "cart": {
+        "text": "Ostukorv on tühi",
+        "total": "Kokku",
+        "empty-button": "Tühjenda ostukorv"
+      }
+      
     }
   }
 };

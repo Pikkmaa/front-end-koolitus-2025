@@ -33,7 +33,7 @@ createRoot(document.getElementById('root')).render(
 //12. K 06.08 - useParams (Yksiku leht), muutmine, localStorage
 //13. K 13.08 kell: 9.00 - tõlge, kaardirakendus, emaili saatmine
 //14. R 15.08 kell 8.45 - API päringud, Bootstrap
-//15. T 19.08 kell 8.45 - inglise keelse Webshopi tegemine
-//16. R 22.08
-//17. T 26.08
+//15. T 19.08 kell 8.45 - KOJU: inglise keelse Webshopi tegemine
+//16. R 22.08 - admebaas KOJU. webshopi fail lõpuni
+//17. T 26.08 - globaalne muutuja, makse
 //18. K 03.09 - ametlik lõpukuupäev
