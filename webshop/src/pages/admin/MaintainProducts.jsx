@@ -33,7 +33,7 @@ function MaintainProducts() {
                 <td>{product.price}</td>
                 <td>{product.category}</td>
                 <td><img className="maintain-image" src={product.image} alt="" /></td>
-                <td>{product.rating.rate} / {product.rating.count}</td>
+                <td>{product.rating?.rate ?? "-"} / {product.rating?.count ?? "-"}</td>
                 <td className="edit-button">
                     <Link to={"/admin/edit-product/" + index}>
                     <img src="/edit.svg" alt="" />

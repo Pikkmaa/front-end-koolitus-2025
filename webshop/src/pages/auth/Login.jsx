@@ -1,7 +1,12 @@
+import { useContext } from "react"
+import { AuthContext } from "../../context/AuthContext"
 
 function Login() {
+  const {setLoggedIn} = useContext(AuthContext);
   return (
-    <div>Login</div>
+    <div>
+      <button onClick={() => setLoggedIn(true)} >Log in</button>
+    </div>
   )
 }
 

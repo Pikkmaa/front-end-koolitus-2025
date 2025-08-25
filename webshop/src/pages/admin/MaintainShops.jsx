@@ -1,4 +1,5 @@
 
+// name, longitude, latitude, openTime
 
 function MaintainShops() {
   return (
